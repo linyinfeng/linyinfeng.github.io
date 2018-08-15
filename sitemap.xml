@@ -1,20 +1,79 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <url>
-    <loc>https://www.linyinfeng.com/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.linyinfeng.com/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.linyinfeng.com/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+        <url>
+            <loc>https://www.linyinfeng.com/archive/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://www.linyinfeng.com/posts/rust-rfc-2349/</loc>
+            
+                <lastmod>2018-08-19T07:36:17+08:00</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://www.linyinfeng.com/posts/start-blogging/</loc>
+            
+                <lastmod>2018-08-01T23:53:16+08:00</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://www.linyinfeng.com/posts/toykio/</loc>
+            
+                <lastmod>2018-08-18T18:24:51+08:00</lastmod>
+            
+        </url>
+    
+    
+        <url>
+            <loc>https://www.linyinfeng.com/</loc>
+        </url>
+    
+        <url>
+            <loc>https://www.linyinfeng.com/posts/</loc>
+        </url>
+    
+    
+        
+        <url>
+            <loc>https://www.linyinfeng.com/tags/</loc>
+        </url>
+        
+        <url>
+            <loc>https://www.linyinfeng.com/tags/bo-ke/</loc>
+        </url>
+        
+        <url>
+            <loc>https://www.linyinfeng.com/tags/future/</loc>
+        </url>
+        
+        <url>
+            <loc>https://www.linyinfeng.com/tags/jing-tai-wang-zhan/</loc>
+        </url>
+        
+        <url>
+            <loc>https://www.linyinfeng.com/tags/lei-xing-xi-tong/</loc>
+        </url>
+        
+        <url>
+            <loc>https://www.linyinfeng.com/tags/rust/</loc>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://www.linyinfeng.com/categories/</loc>
+        </url>
+        
+        <url>
+            <loc>https://www.linyinfeng.com/categories/fan-yi/</loc>
+        </url>
+        
+        <url>
+            <loc>https://www.linyinfeng.com/categories/sui-xiang/</loc>
+        </url>
+        
+    
 </urlset>
