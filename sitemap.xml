@@ -38,6 +38,20 @@
     
         
         <url>
+            <loc>https://www.linyinfeng.com/categories/</loc>
+        </url>
+        
+        <url>
+            <loc>https://www.linyinfeng.com/categories/fan-yi/</loc>
+        </url>
+        
+        <url>
+            <loc>https://www.linyinfeng.com/categories/sui-xiang/</loc>
+        </url>
+        
+    
+        
+        <url>
             <loc>https://www.linyinfeng.com/tags/</loc>
         </url>
         
@@ -59,20 +73,6 @@
         
         <url>
             <loc>https://www.linyinfeng.com/tags/rust/</loc>
-        </url>
-        
-    
-        
-        <url>
-            <loc>https://www.linyinfeng.com/categories/</loc>
-        </url>
-        
-        <url>
-            <loc>https://www.linyinfeng.com/categories/fan-yi/</loc>
-        </url>
-        
-        <url>
-            <loc>https://www.linyinfeng.com/categories/sui-xiang/</loc>
         </url>
         
     
