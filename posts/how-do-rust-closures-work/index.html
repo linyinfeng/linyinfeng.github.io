@@ -88,6 +88,13 @@
         <ul class="toc-parent">
                 
                 <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#unboxed>Unboxed</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
                     <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#move-guan-jian-zi>move 关键字</a>
                     
     
@@ -102,21 +109,7 @@
                 </li>
                 
                 <li class="toc-entry">
-                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#mut-bi-bao>mut 闭包</a>
-                    
-    
-
-                </li>
-                
-                <li class="toc-entry">
-                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#zhu-dong-zhi-ding-bi-bao-lei-xing>主动指定闭包类型</a>
-                    
-    
-
-                </li>
-                
-                <li class="toc-entry">
-                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#unboxed>Unboxed</a>
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#bi-bao-de-mut>闭包的 mut</a>
                     
     
 
@@ -206,8 +199,8 @@
 <p>在这两个例子中，a 和 b 均为闭包，JavaScript 中的 <code>function</code> 也是一样，是不是闭包当然和没有名字并没有理论和实践上的联系。当然，可以说对于将函数设计为一等对象（First class object）的语言，函数是否匿名一般不产生任何实际区别。</p>
 <h3 id="bi-bao-tong-chang-bei-shi-xian-wei-ci-fa-huan-jing-he-yi-ge-han-shu-de-zu-he"><a class="zola-anchor" href="#bi-bao-tong-chang-bei-shi-xian-wei-ci-fa-huan-jing-he-yi-ge-han-shu-de-zu-he" aria-label="Anchor link for: bi-bao-tong-chang-bei-shi-xian-wei-ci-fa-huan-jing-he-yi-ge-han-shu-de-zu-he">🔗</a>
 闭包通常被实现为词法环境和一个函数的组合</h3>
-<p>对于函数基于栈的且没有垃圾回收（Garbage Collection）的语言，往往无法实现完全的闭包。这是因为，闭包从语义上应当能够**延长其捕获的变量的生存期（lifetime）**到长于或等于闭包的生存期。对于广泛利用栈进行函数局部变量分配和流程控制的语言，函数的局部变量的生存期严格与函数调用栈绑定，即从函数调用到函数返回（严格来说是局部变量内存的生存期，显然局部变量的生存期必然小于等于其内存的生存期）。</p>
-<p>举例来说，有上述特征的 C++ 的闭包就易于引发为定义行为（Undefined Behavior）。因为其引用捕获的局部变量的生存期无法自动延长。而例如 Java，JavaScript 和 Go 的闭包就不会，因为其编译器（对于 JavaScript 来说往往是 JIT 编译器）将对局部变量做逃逸分析（Escape Analysis）。将可能“逃逸”的变量生存期延长，由垃圾回收器而不是函数调用栈维护其生存期。又或者将所有局部变量分配在堆上由垃圾回收器维护也是一样（效率比较低下）。</p>
+<p>对于函数基于栈的且没有垃圾回收（Garbage Collection）的语言，往往无法实现完全的闭包。这是因为，闭包从语义上应当能够延长其捕获的变量的生存期（lifetime）到长于或等于闭包的生存期。对于广泛利用栈进行函数局部变量分配和流程控制的语言，函数的局部变量的生存期严格与函数调用栈绑定，即从函数调用到函数返回（严格来说是局部变量内存的生存期，显然局部变量的生存期必然小于等于其内存的生存期）。</p>
+<p>举例来说，有上述特征的 C++ 的闭包就易于引发为定义行为（Undefined Behavior）。因为其引用捕获的局部变量的生存期无法自动延长。而例如 Java，JavaScript 和 Go 的闭包就不会，因为其编译器（对于 JavaScript 来说往往是 JIT 编译器）将对局部变量做逃逸分析（Escape Analysis）。将可能“逃逸”的变量生存期延长，由垃圾回收器而不是函数调用栈维护其生存期。又或者将所有局部变量分配在堆上由垃圾回收器维护也是一样。</p>
 <p>即使如此，各个语言下闭包的基本表现是不变的。因此，闭包通常被实现为其捕获的词法环境和一个函数的组合。</p>
 <p>考虑一个名为 closure，调用方式为 <code>closure(arg1, arg2, ..., argN)</code>，其捕获了变量 <code>env_arg1</code>, <code>env_arg2</code>, ..., <code>env_argM</code>。可以将其实现为一个函数和其词法环境的组合：</p>
 <pre style="background-color:#2b303b;">
@@ -391,60 +384,6 @@
 <p>完整 crate 已经上传到 GitHub 仓库 <a href="https://github.com/linyinfeng/closure">linyinfeng/closure</a>。注意，这是一个非常简陋的闭包设计，仅仅用于阐述一个典型闭包的工作原理。相比于 Rust 内置闭包来说，它的设计是简洁的，使用是繁琐的，性能是低下的。下面将对 Rust 内置闭包的工作进行分析和探讨，同时也与实现的朴素闭包作比较。</p>
 <h2 id="nei-zhi-bi-bao"><a class="zola-anchor" href="#nei-zhi-bi-bao" aria-label="Anchor link for: nei-zhi-bi-bao">🔗</a>
 内置闭包</h2>
-<h3 id="move-guan-jian-zi"><a class="zola-anchor" href="#move-guan-jian-zi" aria-label="Anchor link for: move-guan-jian-zi">🔗</a>
-<code>move</code> 关键字</h3>
-<p><code>move</code> 关键字的意义有时令人感到困惑。在远古 Rust <code>中，move</code> 关键字是另作他用的，后来被删除了。应该是在现在版本的闭包出现以后才重新作为一个有用的关键字出现。在内置闭包捕获变量的时候，Rust 总是尽可能以 <code>&amp;</code> &gt; <code>&amp;mut</code> &gt; <code>move</code> 的顺序进行捕获，这将对捕获的变量产生最少的影响。但是，某些情况下，我们需要闭包获得变量的所有权，但是闭包函数体并不需要获得变量的所有权。这时候我们使用 <code>move</code> 关键字强制 Rust 将所有捕获的变量移动入闭包的环境中，以延长被移动的对象的生存期。</p>
-<p>可以考虑一下为什么有 <code>move</code> 闭包却没有 <code>mut</code> 闭包呢？因为强制 <code>mut</code> 捕获并不会造成任何的好处却会对被捕获的变量产生一个可变借用，这没有任何意义，就与写了 <code>let r = &amp;mut x;</code> 却不修改 r 一样，编译器将提示去除 <code>mut</code>。</p>
-<h3 id="fn-fnmut-fnonce-de-tui-dao"><a class="zola-anchor" href="#fn-fnmut-fnonce-de-tui-dao" aria-label="Anchor link for: fn-fnmut-fnonce-de-tui-dao">🔗</a>
-<code>Fn</code>，<code>FnMut</code>，<code>FnOnce</code> 的推导</h3>
-<p>正如之前反复强调的，闭包究竟实现 <code>Fn</code>，<code>FnMut</code>，<code>FnOnce</code> 中的哪几个 trait，是由闭包对环境的使用，也就是函数体决定的。</p>
-<p>举个例子：</p>
-<pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> s = String::from(&quot;</span><span style="color:#a3be8c;">hello</span><span style="color:#c0c5ce;">&quot;);
-</span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> c = </span><span style="color:#b48ead;">move </span><span style="color:#c0c5ce;">|| println!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, s);
-</span><span style="color:#96b5b4;">c</span><span style="color:#c0c5ce;">();
-</span><span style="color:#96b5b4;">c</span><span style="color:#c0c5ce;">();
-</span></pre>
-<p>能正常运行，输出：</p>
-<pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">s = hello
-</span><span style="color:#c0c5ce;">s = hello
-</span></pre><pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> s = String::from(&quot;</span><span style="color:#a3be8c;">hello</span><span style="color:#c0c5ce;">&quot;);
-</span><span style="color:#b48ead;">let </span><span style="color:#8fa1b3;">c </span><span style="color:#c0c5ce;">= || dbg!(s);
-</span><span style="color:#c0c5ce;">println!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, s);
-</span><span style="color:#96b5b4;">c</span><span style="color:#c0c5ce;">();
-</span><span style="color:#96b5b4;">c</span><span style="color:#c0c5ce;">();
-</span></pre>
-<p>将编译错误：</p>
-<pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">error[E0382]: borrow of moved value: `s`
-</span><span style="color:#c0c5ce;">error[E0382]: use of moved value: `c`
-</span></pre>
-<p>这是因为 <code>dbg!(s)</code> 将获取 <code>s</code> 的所有权再返回 <code>s</code>，而 <code>println!(&quot;{}&quot;, s)</code> 只会获取 <code>s</code> 的引用。同样，<code>s</code> 被移动进第一个闭包是因为 <code>move</code> 关键字的作用，而 <code>s</code> 被移动进第二个闭包是因为第二个闭包的函数体要求 <code>s</code> 的所有权。即使两个例子中 <code>s</code> 均被移动进闭包，第一个闭包依然根据函数体被实现了 <code>Fn</code>，<code>FnMut</code>，<code>FnOnce</code>，第二个闭包被根据函数体实现了 <code>FnOnce</code>。</p>
-<h3 id="mut-bi-bao"><a class="zola-anchor" href="#mut-bi-bao" aria-label="Anchor link for: mut-bi-bao">🔗</a>
-<code>mut</code> 闭包</h3>
-<p>下面示例代码中的 <code>c</code> 变量有时候也令人感到困惑。</p>
-<pre style="background-color:#2b303b;">
-<span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> s = String::from(&quot;</span><span style="color:#a3be8c;">Hello</span><span style="color:#c0c5ce;">&quot;);
-</span><span style="color:#c0c5ce;">{
-</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let mut </span><span style="color:#8fa1b3;">c </span><span style="color:#c0c5ce;">= || s.</span><span style="color:#96b5b4;">push</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">!</span><span style="color:#c0c5ce;">&#39;); </span><span style="color:#65737e;">// !
-</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">c</span><span style="color:#c0c5ce;">();
-</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">c</span><span style="color:#c0c5ce;">();
-</span><span style="color:#c0c5ce;">}
-</span><span style="color:#c0c5ce;">assert_eq!(s, &quot;</span><span style="color:#a3be8c;">Hello!!</span><span style="color:#c0c5ce;">&quot;);
-</span></pre>
-<p>为什么编译器要求 c 必须是可变的才能执行 c() 呢？这是因为不能通过不可变引用闭包修改其内容，包括其中的可变引用。另一方面，也可以从类型上看，无法将不可变的内置闭包传递给要求可变 self 引用的 call_mut。</p>
-<h3 id="zhu-dong-zhi-ding-bi-bao-lei-xing"><a class="zola-anchor" href="#zhu-dong-zhi-ding-bi-bao-lei-xing" aria-label="Anchor link for: zhu-dong-zhi-ding-bi-bao-lei-xing">🔗</a>
-主动指定闭包类型</h3>
-<p>Rust 曾经有过不止一两版的闭包设计，但是少有提及。以下语法是刚开始的 Unboxed Closure 提供的（参见 <a href="https://github.com/rust-lang/rfcs/blob/master/text/0114-closures.md">rfc#114</a>）：</p>
-<pre style="background-color:#2b303b;">
-<span style="color:#65737e;">// Deprecated
-</span><span style="color:#b48ead;">let </span><span style="color:#8fa1b3;">_move_closure </span><span style="color:#c0c5ce;">= |:| {};
-</span><span style="color:#b48ead;">let </span><span style="color:#8fa1b3;">_ref_mut_closure </span><span style="color:#c0c5ce;">= |&amp;</span><span style="color:#bf616a;">mut</span><span style="color:#c0c5ce;">:| {};
-</span><span style="color:#b48ead;">let </span><span style="color:#8fa1b3;">_ref_closure </span><span style="color:#c0c5ce;">= |&amp;:| {};
-</span></pre>
-<p>实际上便与上文实现三种闭包类型对应，如今的闭包移除了这个语法。依靠自动推导显然是更好的办法。编译器将尽可能实现调用起来更宽松的闭包。（当然我们实现的朴素闭包并没有这个功能）</p>
 <h3 id="unboxed"><a class="zola-anchor" href="#unboxed" aria-label="Anchor link for: unboxed">🔗</a>
 Unboxed</h3>
 <p>上文实现的闭包实际上与内置闭包非常相似，翻译后使用起来基本没有区别。</p>
@@ -510,7 +449,51 @@ Unboxed</h3>
 </span><span style="color:#c0c5ce;">assert_eq!(content_of_c, pointer_to_s);
 </span><span style="color:#c0c5ce;">assert_eq!(s, &quot;</span><span style="color:#a3be8c;">Hello!!</span><span style="color:#c0c5ce;">&quot;);
 </span></pre>
-<p>可见 Rust 内置闭包实际上<strong>只包含了环境</strong>。原因是 Rust 的闭包是 unboxed 闭包，其函数直接被编译器定义在 <code>FnOnce</code>，<code>FnMut</code> 和 <code>Fn</code> 的实现中，因此，内置闭包对象根本不需要携带函数指针。对内置闭包的函数调用大部分情况下在编译期就绑定了，而不是运行时。即使是 trait object，函数指针也能自动地由虚表提供，非常完美。这样做的好处是方便 LLVM 做内联优化，同时闭包大部分情况下也不需要额外携带一个指针了。</p>
+<p>可见 Rust 内置闭包实际上<strong>只包含了环境</strong>。原因是 Rust 的闭包是 unboxed 闭包，其函数直接被编译器定义在 <code>FnOnce</code>，<code>FnMut</code> 和 <code>Fn</code> 的实现中，因此，内置闭包对象根本不需要携带函数指针。对内置闭包的函数调用大部分情况下在编译期就绑定了（除非使用 trait object），而不是运行时。这样做的好处是方便 LLVM 做内联优化，同时闭包本身也不需要额外携带一个指针了，可以统一地交给 trait object 做。</p>
+<h3 id="move-guan-jian-zi"><a class="zola-anchor" href="#move-guan-jian-zi" aria-label="Anchor link for: move-guan-jian-zi">🔗</a>
+<code>move</code> 关键字</h3>
+<p><code>move</code> 关键字的意义有时令人感到困惑。在远古 Rust <code>中，move</code> 关键字是另作他用的，后来被删除了。应该是在现在版本的闭包出现以后才重新作为一个有用的关键字出现。在内置闭包捕获变量的时候，Rust 总是尽可能以 <code>&amp;</code> &gt; <code>&amp;mut</code> &gt; <code>move</code> 的顺序进行捕获，这将对捕获的变量产生最少的影响。但是，某些情况下，我们需要闭包获得变量的所有权，但是闭包函数体并不需要获得变量的所有权。这时候我们使用 <code>move</code> 关键字强制 Rust 将所有捕获的变量移动入闭包的环境中，以延长被移动的对象的生存期。</p>
+<p>可以考虑一下为什么有 <code>move</code> 闭包却没有 <code>mut</code> 闭包呢？因为强制 <code>mut</code> 捕获并不会造成任何的好处却会对被捕获的变量产生一个可变借用，这没有任何意义，就与写了 <code>let r = &amp;mut x;</code> 却不修改 r 一样，编译器将提示去除 <code>mut</code>。</p>
+<h3 id="fn-fnmut-fnonce-de-tui-dao"><a class="zola-anchor" href="#fn-fnmut-fnonce-de-tui-dao" aria-label="Anchor link for: fn-fnmut-fnonce-de-tui-dao">🔗</a>
+<code>Fn</code>，<code>FnMut</code>，<code>FnOnce</code> 的推导</h3>
+<p>正如之前反复强调的，闭包究竟实现 <code>Fn</code>，<code>FnMut</code>，<code>FnOnce</code> 中的哪几个 trait，是由闭包对环境的使用，也就是函数体决定的。</p>
+<p>举个例子：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> s = String::from(&quot;</span><span style="color:#a3be8c;">hello</span><span style="color:#c0c5ce;">&quot;);
+</span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> c = </span><span style="color:#b48ead;">move </span><span style="color:#c0c5ce;">|| println!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, s);
+</span><span style="color:#96b5b4;">c</span><span style="color:#c0c5ce;">();
+</span><span style="color:#96b5b4;">c</span><span style="color:#c0c5ce;">();
+</span></pre>
+<p>能正常运行，输出：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">s = hello
+</span><span style="color:#c0c5ce;">s = hello
+</span></pre><pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> s = String::from(&quot;</span><span style="color:#a3be8c;">hello</span><span style="color:#c0c5ce;">&quot;);
+</span><span style="color:#b48ead;">let </span><span style="color:#8fa1b3;">c </span><span style="color:#c0c5ce;">= || dbg!(s);
+</span><span style="color:#c0c5ce;">println!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#c0c5ce;">&quot;, s);
+</span><span style="color:#96b5b4;">c</span><span style="color:#c0c5ce;">();
+</span><span style="color:#96b5b4;">c</span><span style="color:#c0c5ce;">();
+</span></pre>
+<p>将编译错误：</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">error[E0382]: borrow of moved value: `s`
+</span><span style="color:#c0c5ce;">error[E0382]: use of moved value: `c`
+</span></pre>
+<p>这是因为 <code>dbg!(s)</code> 将获取 <code>s</code> 的所有权再返回 <code>s</code>，而 <code>println!(&quot;{}&quot;, s)</code> 只会获取 <code>s</code> 的引用。同样，<code>s</code> 被移动进第一个闭包是因为 <code>move</code> 关键字的作用，而 <code>s</code> 被移动进第二个闭包是因为第二个闭包的函数体要求 <code>s</code> 的所有权。即使两个例子中 <code>s</code> 均被移动进闭包，第一个闭包依然根据函数体被实现了 <code>Fn</code>，<code>FnMut</code>，<code>FnOnce</code>，第二个闭包被根据函数体实现了 <code>FnOnce</code>。</p>
+<h3 id="bi-bao-de-mut"><a class="zola-anchor" href="#bi-bao-de-mut" aria-label="Anchor link for: bi-bao-de-mut">🔗</a>
+闭包的 <code>mut</code></h3>
+<p>下面示例代码中的 <code>c</code> 变量有时候也令人感到困惑。</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#b48ead;">let mut</span><span style="color:#c0c5ce;"> s = String::from(&quot;</span><span style="color:#a3be8c;">Hello</span><span style="color:#c0c5ce;">&quot;);
+</span><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let mut </span><span style="color:#8fa1b3;">c </span><span style="color:#c0c5ce;">= || s.</span><span style="color:#96b5b4;">push</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">!</span><span style="color:#c0c5ce;">&#39;); </span><span style="color:#65737e;">// !
+</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">c</span><span style="color:#c0c5ce;">();
+</span><span style="color:#c0c5ce;">    </span><span style="color:#96b5b4;">c</span><span style="color:#c0c5ce;">();
+</span><span style="color:#c0c5ce;">}
+</span><span style="color:#c0c5ce;">assert_eq!(s, &quot;</span><span style="color:#a3be8c;">Hello!!</span><span style="color:#c0c5ce;">&quot;);
+</span></pre>
+<p>为什么编译器要求 c 必须是可变的才能执行 c() 呢？这是因为不能通过不可变引用闭包修改其内容，包括其中的可变引用。另一方面，也可以从类型上看，无法将不可变的内置闭包传递给要求可变 self 引用的 call_mut。</p>
 <h2 id="tuo-chi-bi-bao"><a class="zola-anchor" href="#tuo-chi-bi-bao" aria-label="Anchor link for: tuo-chi-bi-bao">🔗</a>
 脱离闭包</h2>
 <p>Rust 中，最简单高阶函数一般通过被这样书写：</p>
@@ -561,7 +544,7 @@ Unboxed</h3>
         
         
             <div id="powered-by-container">
-                <small id="powered-by">Powered by <a href="https://github.com/gutenberg">Gutenberg</a></small>
+                <small id="powered-by">Powered by <a href="https://www.getzola.org">Zola</a></small>
             </div>
         
     </div>
