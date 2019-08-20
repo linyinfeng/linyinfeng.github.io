@@ -6,8 +6,8 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel=stylesheet type="text/css" href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;normalize.css>
-        <link rel=stylesheet type="text/css" href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;style.css>
+        <link rel=stylesheet type="text/css" href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;normalize.css>
+        <link rel=stylesheet type="text/css" href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;style.css>
         <title>
     Lin Yinfeng
     - Rust 闭包笔记
@@ -20,21 +20,120 @@
             
             
     <div class="header-container container">
-        <h1 id="blog-title" class="title"><a href=https:&#x2f;&#x2f;www.linyinfeng.com>Lin Yinfeng</a></h1>
+        <h1 id="blog-title" class="title"><a href=https:&#x2F;&#x2F;www.linyinfeng.com>Lin Yinfeng</a></h1>
         <nav id="global-nav"><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com
                 >Home</a></span><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;archive
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;archive
                 >Archive</a></span><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;links
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;links
                 >Links</a></span><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;status
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;status
                 >Status</a></span></nav>
     </div>
 
             
         </header>
         <div id="main-aside-container">
+            
+    
+        
+                <aside id="aside">
+                    <div id="aside-container">
+                        
+    
+    <div class="toc-container container">
+        <h1 class="title toc-title">Table of Contents</h1>
+        
+    
+        <ul class="toc-parent">
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#bi-bao-de-gai-nian>闭包的概念</a>
+                    
+    
+        <ul class="toc-parent">
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#bi-bao-shi-ni-ming-han-shu-ma>闭包是匿名函数吗？</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#bi-bao-tong-chang-bei-shi-xian-wei-ci-fa-huan-jing-he-yi-ge-han-shu-de-zu-he>闭包通常被实现为词法环境和一个函数的组合</a>
+                    
+    
+
+                </li>
+                
+        </ul>
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#yi-ge-po-su-rust-bi-bao-de-she-ji-yu-shi-xian>一个朴素 Rust 闭包的设计与实现</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#nei-zhi-bi-bao>内置闭包</a>
+                    
+    
+        <ul class="toc-parent">
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#unboxed>Unboxed</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#move-guan-jian-zi>move 关键字</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#fn-fnmut-fnonce-de-tui-dao>Fn，FnMut，FnOnce 的推导</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#bi-bao-de-mut>闭包的 mut</a>
+                    
+    
+
+                </li>
+                
+        </ul>
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;#tuo-chi-bi-bao>脱离闭包</a>
+                    
+    
+
+                </li>
+                
+        </ul>
+    
+
+    </div>
+
+
+                    </div>
+                </aside>
             
     
 
@@ -47,7 +146,7 @@
     <article class="article-container container">
         
     <h1 class="title article-title">
-        <a class="article-title-link" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;posts&#x2f;how-do-rust-closures-work&#x2f;">
+        <a class="article-title-link" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;how-do-rust-closures-work&#x2F;">
             
     <span class="draft-indicator">
         
@@ -63,19 +162,19 @@
     <time datetime=2019-03-15T11:06:01+08:00>2019-03-15 11:06</time>
 
         
-    <div class="article-taxonomies"><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;tags">
-                Tags</a><span class="article-terms"><a class="article-term-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;tags&#x2f;rust&#x2f;">Rust</a><a class="article-term-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;tags&#x2f;bi-bao&#x2f;">闭包</a><a class="article-term-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;tags&#x2f;han-shu-shi-bian-cheng&#x2f;">函数式编程</a></span></span><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;categories">
-                Categories</a><span class="article-terms"><a class="article-term-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;categories&#x2f;bi-ji&#x2f;">笔记</a></span></span></div>
+    <div class="article-taxonomies"><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;tags">
+                Tags</a><span class="article-terms"><a class="article-term-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;tags&#x2F;rust&#x2F;">Rust</a><a class="article-term-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;tags&#x2F;bi-bao&#x2F;">闭包</a><a class="article-term-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;tags&#x2F;han-shu-shi-bian-cheng&#x2F;">函数式编程</a></span></span><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;categories">
+                Categories</a><span class="article-terms"><a class="article-term-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;categories&#x2F;bi-ji&#x2F;">笔记</a></span></span></div>
 
         
     
         <section class="article-license">
             
                 <div class="license-image">
-                    <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Creative Commons License" />
+                    &lt;img src=&quot;https:&#x2F;&#x2F;i.creativecommons.org&#x2F;l&#x2F;by-nc-sa&#x2F;4.0&#x2F;88x31.png&quot; alt=&quot;Creative Commons License&quot; &#x2F;&gt;
                 </div>
             
-            <small class="license">This work is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a></small>
+            <small class="license">This work is licensed under a &lt;a href=&quot;http:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-nc-sa&#x2F;4.0&#x2F;&quot;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License&lt;&#x2F;a&gt;</small>
         </section>
     
 
@@ -457,6 +556,6 @@ assert_eq!(s, &quot;</span><span style="color:#a3be8c;">Hello!!</span><span styl
         </footer>
     
 
-    <script src=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;layout-helper.js></script>
+    <script src=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;layout-helper.js></script>
 </body>
 </html>

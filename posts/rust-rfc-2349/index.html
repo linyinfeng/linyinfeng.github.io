@@ -6,8 +6,8 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel=stylesheet type="text/css" href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;normalize.css>
-        <link rel=stylesheet type="text/css" href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;style.css>
+        <link rel=stylesheet type="text/css" href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;normalize.css>
+        <link rel=stylesheet type="text/css" href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;style.css>
         <title>
     Lin Yinfeng
     - Rust RFC 2349 - Pin 翻译
@@ -20,21 +20,205 @@
             
             
     <div class="header-container container">
-        <h1 id="blog-title" class="title"><a href=https:&#x2f;&#x2f;www.linyinfeng.com>Lin Yinfeng</a></h1>
+        <h1 id="blog-title" class="title"><a href=https:&#x2F;&#x2F;www.linyinfeng.com>Lin Yinfeng</a></h1>
         <nav id="global-nav"><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com
                 >Home</a></span><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;archive
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;archive
                 >Archive</a></span><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;links
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;links
                 >Links</a></span><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;status
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;status
                 >Status</a></span></nav>
     </div>
 
             
         </header>
         <div id="main-aside-container">
+            
+    
+        
+                <aside id="aside">
+                    <div id="aside-container">
+                        
+    
+    <div class="toc-container container">
+        <h1 class="title toc-title">Table of Contents</h1>
+        
+    
+        <ul class="toc-parent">
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#zhai-yao>摘要</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#dong-ji>动机</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#zhi-nan-ceng-ci-de-jie-shi>指南层次的解释</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#can-kao-ceng-ci-de-jie-shi>参考层次的解释</a>
+                    
+    
+        <ul class="toc-parent">
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#unpin-zi-dong-trait>Unpin 自动 trait</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#pin>Pin</a>
+                    
+    
+        <ul class="toc-parent">
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#an-quan-apis>安全 APIs</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#bu-an-quan-apis>不安全 APIs</a>
+                    
+    
+
+                </li>
+                
+        </ul>
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#pinbox>PinBox</a>
+                    
+    
+        <ul class="toc-parent">
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#an-quan-api>安全 API</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#bu-an-quan-api>不安全 API</a>
+                    
+    
+
+                </li>
+                
+        </ul>
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#bu-ke-yi-dong-sheng-cheng-qi>不可移动生成器</a>
+                    
+    
+
+                </li>
+                
+        </ul>
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#que-dian>缺点</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#li-you-he-ti-dai-fang-an>理由和替代方案</a>
+                    
+    
+        <ul class="toc-parent">
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#dui-bi-move>对比 ?Move</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#dui-bi-shi-yong-unsafe-apis>对比使用 unsafe APIs</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#zuo-wei-bao-zhuang-lei-de-anchor-he-stablederef>作为包装类的 Anchor 和 StableDeref</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#zhan-pinning-api-qian-zai-de-wei-lai-kuo-zhan>栈 pinning API（潜在的未来扩展）</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#jiang-pin-zuo-wei-nei-zhi-lei-xing-qian-zai-de-wei-lai-kuo-zhan>将 Pin 作为内置类型（潜在的未来扩展）</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#tong-shi-you-pin-he-pinmut>同时有 Pin 和 PinMut</a>
+                    
+    
+
+                </li>
+                
+        </ul>
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;#wei-jie-jue-de-wen-ti>未解决的问题</a>
+                    
+    
+
+                </li>
+                
+        </ul>
+    
+
+    </div>
+
+
+                    </div>
+                </aside>
             
     
 
@@ -47,7 +231,7 @@
     <article class="article-container container">
         
     <h1 class="title article-title">
-        <a class="article-title-link" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;posts&#x2f;rust-rfc-2349&#x2f;">
+        <a class="article-title-link" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;rust-rfc-2349&#x2F;">
             
     <span class="draft-indicator">
         
@@ -63,19 +247,19 @@
     <time datetime=2018-08-19T07:36:17+08:00>2018-08-19 07:36</time>
 
         
-    <div class="article-taxonomies"><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;tags">
-                Tags</a><span class="article-terms"><a class="article-term-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;tags&#x2f;rust&#x2f;">Rust</a><a class="article-term-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;tags&#x2f;lei-xing-xi-tong&#x2f;">类型系统</a></span></span><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;categories">
-                Categories</a><span class="article-terms"><a class="article-term-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;categories&#x2f;fan-yi&#x2f;">翻译</a></span></span></div>
+    <div class="article-taxonomies"><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;tags">
+                Tags</a><span class="article-terms"><a class="article-term-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;tags&#x2F;rust&#x2F;">Rust</a><a class="article-term-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;tags&#x2F;lei-xing-xi-tong&#x2F;">类型系统</a></span></span><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;categories">
+                Categories</a><span class="article-terms"><a class="article-term-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;categories&#x2F;fan-yi&#x2F;">翻译</a></span></span></div>
 
         
     
         <section class="article-license">
             
                 <div class="license-image">
-                    <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Creative Commons License" />
+                    &lt;img src=&quot;https:&#x2F;&#x2F;i.creativecommons.org&#x2F;l&#x2F;by-nc-sa&#x2F;4.0&#x2F;88x31.png&quot; alt=&quot;Creative Commons License&quot; &#x2F;&gt;
                 </div>
             
-            <small class="license">This work is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a></small>
+            <small class="license">This work is licensed under a &lt;a href=&quot;http:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-nc-sa&#x2F;4.0&#x2F;&quot;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License&lt;&#x2F;a&gt;</small>
         </section>
     
 
@@ -341,6 +525,6 @@
         </footer>
     
 
-    <script src=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;layout-helper.js></script>
+    <script src=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;layout-helper.js></script>
 </body>
 </html>

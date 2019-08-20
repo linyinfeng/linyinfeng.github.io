@@ -6,8 +6,8 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel=stylesheet type="text/css" href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;normalize.css>
-        <link rel=stylesheet type="text/css" href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;style.css>
+        <link rel=stylesheet type="text/css" href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;normalize.css>
+        <link rel=stylesheet type="text/css" href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;style.css>
         <title>
     Lin Yinfeng
     - PEP 484 -- 类型提示
@@ -20,21 +20,183 @@
             
             
     <div class="header-container container">
-        <h1 id="blog-title" class="title"><a href=https:&#x2f;&#x2f;www.linyinfeng.com>Lin Yinfeng</a></h1>
+        <h1 id="blog-title" class="title"><a href=https:&#x2F;&#x2F;www.linyinfeng.com>Lin Yinfeng</a></h1>
         <nav id="global-nav"><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com
                 >Home</a></span><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;archive
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;archive
                 >Archive</a></span><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;links
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;links
                 >Links</a></span><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;status
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;status
                 >Status</a></span></nav>
     </div>
 
             
         </header>
         <div id="main-aside-container">
+            
+    
+        
+                <aside id="aside">
+                    <div id="aside-container">
+                        
+    
+    <div class="toc-container container">
+        <h1 class="title toc-title">Table of Contents</h1>
+        
+    
+        <ul class="toc-parent">
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#zhai-yao>摘要</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#yi-xiang-he-mu-biao>意向和目标</a>
+                    
+    
+        <ul class="toc-parent">
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#fei-mu-biao>非目标</a>
+                    
+    
+
+                </li>
+                
+        </ul>
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#zhu-jie-de-yi-si>注解的意思</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#lei-xing-ding-yi-yu-fa>类型定义语法</a>
+                    
+    
+        <ul class="toc-parent">
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#ke-bei-jie-shou-de-lei-xing-ti-shi>可被接受的类型提示</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#shi-yong-none>使用 None</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#lei-xing-bie-ming>类型别名</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#callable>Callable</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#fan-xing>泛型</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#yong-hu-ding-yi-fan-xing>用户定义泛型</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#lei-xing-can-shu-de-zuo-yong-yu-gui-ze>类型参数的作用域规则</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#shi-li-hua-lei-xing-lei-he-lei-xing-ca-chu>实例化类型类和类型擦除</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#ren-yi-fan-xing-lei-zuo-wei-ji-lei>任意泛型类作为基类</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#chou-xiang-fan-xing-lei-xing>抽象泛型类型</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#dai-you-shang-jie-de-lei-xing-bian-liang>带有上界的类型变量</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#xie-bian-yu-ni-bian>协变与逆变</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#shu-zi-ta-numeric-tower>数字塔（Numeric tower）</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;#qian-xiang-yin-yong>前向引用</a>
+                    
+    
+
+                </li>
+                
+        </ul>
+    
+
+                </li>
+                
+        </ul>
+    
+
+    </div>
+
+
+                    </div>
+                </aside>
             
     
 
@@ -47,7 +209,7 @@
     <article class="article-container container">
         
     <h1 class="title article-title">
-        <a class="article-title-link" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;posts&#x2f;pep-484-type-hints&#x2f;">
+        <a class="article-title-link" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;pep-484-type-hints&#x2F;">
             
     <span class="draft-indicator">
         
@@ -65,8 +227,8 @@
     <time datetime=2018-08-06T22:43:43+08:00>2018-08-06 22:43</time>
 
         
-    <div class="article-taxonomies"><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;tags">
-                Tags</a><span class="article-terms"><span class="article-term-name">Python</span><span class="article-term-name">类型系统</span></span></span><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;categories">
+    <div class="article-taxonomies"><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;tags">
+                Tags</a><span class="article-terms"><span class="article-term-name">Python</span><span class="article-term-name">类型系统</span></span></span><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;categories">
                 Categories</a><span class="article-terms"><span class="article-term-name">翻译</span></span></span></div>
 
         
@@ -74,10 +236,10 @@
         <section class="article-license">
             
                 <div class="license-image">
-                    <img src="https://i.creativecommons.org/p/zero/1.0/88x31.png" alt="Creative Commons License" />
+                    &lt;img src=&quot;https:&#x2F;&#x2F;i.creativecommons.org&#x2F;p&#x2F;zero&#x2F;1.0&#x2F;88x31.png&quot; alt=&quot;Creative Commons License&quot; &#x2F;&gt;
                 </div>
             
-            <small class="license">This work is licensed under a <a href="http://creativecommons.org/licenses/zero/1.0/">CC0 License</a></small>
+            <small class="license">This work is licensed under a &lt;a href=&quot;http:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;zero&#x2F;1.0&#x2F;&quot;&gt;CC0 License&lt;&#x2F;a&gt;</small>
         </section>
     
 
@@ -644,6 +806,6 @@ def bad_func(x: B_co) -&gt; B_co: # 被类型检查器标记为错误
         </footer>
     
 
-    <script src=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;layout-helper.js></script>
+    <script src=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;layout-helper.js></script>
 </body>
 </html>

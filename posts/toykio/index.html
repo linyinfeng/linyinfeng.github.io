@@ -6,8 +6,8 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel=stylesheet type="text/css" href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;normalize.css>
-        <link rel=stylesheet type="text/css" href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;style.css>
+        <link rel=stylesheet type="text/css" href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;normalize.css>
+        <link rel=stylesheet type="text/css" href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;style.css>
         <title>
     Lin Yinfeng
     - Futures-rs 博文 Toykio 翻译
@@ -20,21 +20,77 @@
             
             
     <div class="header-container container">
-        <h1 id="blog-title" class="title"><a href=https:&#x2f;&#x2f;www.linyinfeng.com>Lin Yinfeng</a></h1>
+        <h1 id="blog-title" class="title"><a href=https:&#x2F;&#x2F;www.linyinfeng.com>Lin Yinfeng</a></h1>
         <nav id="global-nav"><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com
                 >Home</a></span><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;archive
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;archive
                 >Archive</a></span><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;links
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;links
                 >Links</a></span><span class="global-nav-item-container"><a class="global-nav-item"
-                    href=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;status
+                    href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;status
                 >Status</a></span></nav>
     </div>
 
             
         </header>
         <div id="main-aside-container">
+            
+    
+        
+                <aside id="aside">
+                    <div id="aside-container">
+                        
+    
+    <div class="toc-container container">
+        <h1 class="title toc-title">Table of Contents</h1>
+        
+    
+        <ul class="toc-parent">
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;toykio&#x2F;#asynctcpstream>AsyncTcpStream</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;toykio&#x2F;#asyncread-he-asyncwrite>AsyncRead 和 AsyncWrite</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;toykio&#x2F;#shi-jian-xun-huan>事件循环</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;toykio&#x2F;#yi-ge-future-de-yi-sheng>一个 future 的一生</a>
+                    
+    
+
+                </li>
+                
+                <li class="toc-entry">
+                    <a href=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;toykio&#x2F;#gan-xie>感谢</a>
+                    
+    
+
+                </li>
+                
+        </ul>
+    
+
+    </div>
+
+
+                    </div>
+                </aside>
             
     
 
@@ -47,7 +103,7 @@
     <article class="article-container container">
         
     <h1 class="title article-title">
-        <a class="article-title-link" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;posts&#x2f;toykio&#x2f;">
+        <a class="article-title-link" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;posts&#x2F;toykio&#x2F;">
             
     <span class="draft-indicator">
         
@@ -63,19 +119,19 @@
     <time datetime=2018-08-18T18:24:51+08:00>2018-08-18 18:24</time>
 
         
-    <div class="article-taxonomies"><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;tags">
-                Tags</a><span class="article-terms"><a class="article-term-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;tags&#x2f;rust&#x2f;">Rust</a><a class="article-term-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;tags&#x2f;future&#x2f;">Future</a></span></span><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;categories">
-                Categories</a><span class="article-terms"><a class="article-term-name" href="https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;categories&#x2f;fan-yi&#x2f;">翻译</a></span></span></div>
+    <div class="article-taxonomies"><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;tags">
+                Tags</a><span class="article-terms"><a class="article-term-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;tags&#x2F;rust&#x2F;">Rust</a><a class="article-term-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;tags&#x2F;future&#x2F;">Future</a></span></span><span class="article-taxonomy"><a class="article-taxonomy-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;categories">
+                Categories</a><span class="article-terms"><a class="article-term-name" href="https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;categories&#x2F;fan-yi&#x2F;">翻译</a></span></span></div>
 
         
     
         <section class="article-license">
             
                 <div class="license-image">
-                    <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Creative Commons License" />
+                    &lt;img src=&quot;https:&#x2F;&#x2F;i.creativecommons.org&#x2F;l&#x2F;by-nc-sa&#x2F;4.0&#x2F;88x31.png&quot; alt=&quot;Creative Commons License&quot; &#x2F;&gt;
                 </div>
             
-            <small class="license">This work is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a></small>
+            <small class="license">This work is licensed under a &lt;a href=&quot;http:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-nc-sa&#x2F;4.0&#x2F;&quot;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License&lt;&#x2F;a&gt;</small>
         </section>
     
 
@@ -274,6 +330,6 @@
         </footer>
     
 
-    <script src=https:&#x2f;&#x2f;www.linyinfeng.com&#x2f;layout-helper.js></script>
+    <script src=https:&#x2F;&#x2F;www.linyinfeng.com&#x2F;layout-helper.js></script>
 </body>
 </html>
